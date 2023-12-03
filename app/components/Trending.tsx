@@ -24,7 +24,7 @@ const Trending = () => {
                 {trend}
               </button>
             ))}
-            H
+          
           </div>
         </div>
 
