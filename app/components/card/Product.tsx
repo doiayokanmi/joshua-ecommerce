@@ -14,7 +14,7 @@ const Product = ({ image, title, price, basis }: props) => {
   return (
     <>
       <div
-        className={`${basis} p-2 group transition-all mt-4 ease-in-out border-r border-b space-x-4 flex flex-col lg:flex-row`}
+        className={`${basis} text-xs lg:text-base p-2 group transition-all mt-4 ease-in-out border-r border-b space-x-4 flex flex-col lg:flex-row`}
       >
         <div className="basis-1/2 flex-1 relative">
           <Image
