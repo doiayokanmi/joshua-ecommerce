@@ -42,6 +42,18 @@ const Special = () => {
             title="Simple product"
             price="125.56"
           />
+          <Product
+            basis="basis-1/2 lg:basis-1/3"
+            image={"/image/products/polite.png"}
+            title="Simple product"
+            price="125.56"
+          />
+          <Product
+            basis="basis-1/2 lg:basis-1/3"
+            image={"/image/products/polite.png"}
+            title="Simple product"
+            price="125.56"
+          />
         </div>
       </section>
     </>

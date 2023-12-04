@@ -6,6 +6,7 @@ import { Lock, ShoppingCart, Search, Menu, X } from "lucide-react";
 import { links } from "@/util";
 import Link from "next/link";
 import Image from "next/image";
+import { Badge } from "@nextui-org/react";
 
 const Navbar = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -66,7 +67,9 @@ const Navbar = () => {
           </div>
 
         <Link className="flex items-center p-4 space-x-8" href={"/register"}>
-          <ShoppingCart className="mr-2" size={18} /> My Cart
+          <Badge content='' size="sm" placement="top-left" color="danger">
+          <ShoppingCart className="mr-2" size={18} />
+          </Badge> My Cart
         </Link>
       </div>
     </>
