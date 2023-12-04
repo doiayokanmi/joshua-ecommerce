@@ -5,6 +5,7 @@ import Trending from "./components/Trending";
 import Special from "./components/Special";
 import Heading from "./components/Heading";
 import CenterAds from "./components/CenterAds";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       </section>
       <Special />
       <CenterAds />
+      <Footer />
     </>
   );
 }

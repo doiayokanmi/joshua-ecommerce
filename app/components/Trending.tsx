@@ -12,14 +12,14 @@ const Trending = () => {
       <div className="basis-3/4">
         <div className="flex justify-between">
           <Heading title="trending items" />
-          <div className="flex overflow-x-scroll lg:overflow-hidden">
+          <div className="flex text-xs lg:text-base overflow-x-scroll lg:overflow-hidden">
             {trending.map((trend, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentTab(index)}
                 className={`p-2 px-4 ${
                   currentTab == index && "text-primary"
-                } capitalize hover:text-primary`}
+                } capitalize whitespace-nowrap hover:text-primary`}
               >
                 {trend}
               </button>

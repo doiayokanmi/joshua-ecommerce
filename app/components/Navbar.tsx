@@ -15,18 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-gray-100 text-xs flex flex-col lg:flex-row items-center justify-between lg:px-12 p-4">
-        <p>
-          Welcome to Emarket ! Wrap new offers / gift every single day on
-          Weekends - New Coupon code: Happy2017
-        </p>
-
-        <div className="flex space-x-8 justify-between mt-4 items-center">
-          <p className="flex space-x-2 items-center">🇬🇧 English</p>
-          <p className="flex space-x-2 items-center">💵 USD</p>
-        </div>
-      </div>
-
+      
       <div className="flex justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
         <Image src={"/image/logo.png"} width={80} height={50} alt="logo" />
 
