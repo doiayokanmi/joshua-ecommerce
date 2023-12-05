@@ -30,15 +30,15 @@ const Product = ({ image, title, price, basis }: props) => {
           />
         </div>
 
-        <div className="basis-1/2 flex flex-col justify-between flex-1">
+        <div className="basis-1/2 flex flex-col flex-1">
           <Link href={'/'} className="max-h-12 text-clip overflow-hidden">{title}</Link>
 
-          <div className="lg:my-2 my-4">
+          <div className="my-4">
             <p className="flex">❤💕💕❤❤</p>
             <p className="font-bold text-primary">${price}</p>
           </div>
 
-          <div className="flex space-x-1">
+          <div className="flex  space-x-1">
             <button className="rounded flex-1 p-2 text-xs capitalize flex justify-center items-center bg-black hover:bg-primary text-white">
               <ShoppingBasket className="mr-1 hidden lg:block" size={14} />
               Add to cart
