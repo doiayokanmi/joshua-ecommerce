@@ -7,15 +7,14 @@ import { links } from "@/util";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@nextui-org/react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  
 
   return (
     <>
-      
       <div className="flex justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
         <Image src={"/image/logo.png"} width={80} height={50} alt="logo" />
 
@@ -37,28 +36,40 @@ const Navbar = () => {
       </div>
 
       <div className="relative bg-primary text-xs font-bold flex justify-between items-center lg:px-12 px-4 text-white">
-        <div className="cursor-pointer lg:hidden" onClick={()=>setIsOpen(!isOpen)}>
+        <div
+          className="cursor-pointer lg:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           <Menu />
         </div>
-          <div className={`flex transition-all ease-in-out absolute top-12 bg-primary left-0 w-full lg:w-auto lg:static flex-col lg:flex-row lg:h-auto overflow-hidden ${isOpen ? 'h-[300px]' : 'h-0'}`}>
-            {links.map((link, index) => (
-              <Link
-                className={`uppercase p-4 hover:bg-black ${
-                  currentPage == index && "bg-black"
-                }`}
-                href={link.linkTo}
-                key={index}
-                onClick={() => setCurrentPage(index)}
-              >
-                {link.title}
-              </Link>
-            ))}
-          </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className={`flex transition-all ease-in-out absolute top-12 bg-primary left-0 w-full lg:w-auto lg:static flex-col lg:flex-row lg:h-auto overflow-hidden ${
+            isOpen ? "h-[300px]" : "h-0"
+          }`}
+        >
+          {links.map((link, index) => (
+            <Link
+              className={`uppercase p-4 hover:bg-black ${
+                currentPage == index && "bg-black"
+              }`}
+              href={link.linkTo}
+              key={index}
+              onClick={() => setCurrentPage(index)}
+            >
+              {link.title}
+            </Link>
+          ))}
+        </motion.div>
 
         <Link className="flex items-center p-4 space-x-8" href={"/register"}>
-          <Badge content='' size="sm" placement="top-left" color="danger">
-          <ShoppingCart className="mr-2" size={18} />
-          </Badge> My Cart
+          <Badge content="" size="sm" placement="top-left" color="danger">
+            <ShoppingCart className="mr-2" size={18} />
+          </Badge>{" "}
+          My Cart
         </Link>
       </div>
     </>

@@ -30,7 +30,7 @@ const Product = ({ image, title, price, basis }: props) => {
           />
         </div>
 
-        <div className="basis-1/2 flex flex-col flex-1">
+        <div className="basis-1/2 flex flex-col justify-between lg:justify-start flex-1">
           <Link href={'/'} className="max-h-12 text-clip overflow-hidden">{title}</Link>
 
           <div className="my-4">

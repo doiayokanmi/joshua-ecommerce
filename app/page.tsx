@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -7,6 +9,7 @@ import Heading from "./components/Heading";
 import CenterAds from "./components/CenterAds";
 import Footer from "./components/Footer";
 import Layout from "./components/layout/Layout";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -14,13 +17,18 @@ export default function Home() {
       <Layout>
         <Navbar />
         <Hero />
-        <section className="flex flex-col lg:px-12 px-4 lg:space-x-8 lg:flex-row">
+        <motion.section
+          initial={{ x: -1000 }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col lg:px-12 px-4 lg:space-x-8 lg:flex-row"
+        >
           <div className="basis-1/4">
             <Heading title="Popular items" />
           </div>
 
           <Trending />
-        </section>
+        </motion.section>
         <Special />
         <CenterAds />
         <Footer />
