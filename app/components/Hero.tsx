@@ -1,13 +1,22 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Blinds, Check } from "lucide-react";
 import { categories } from "@/util";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
     <>
-      <section className="lg:px-12 p-4">
+      <motion.section
+        initial={{ x: 1200 }}
+        animate={{ x: 0 }}
+        exit={{ x: -100 }}
+        transition={{ duration: 0.5 }}
+        className="lg:px-12 p-4"
+      >
         <div className="border rounded py-4 pe-4 flex">
           <div className="basis-1/4 absolute lg:static h-0 lg:h-auto overflow-hidden">
             <p className="flex uppercase p-2 px-4 font-bold items-center">
@@ -54,7 +63,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };
