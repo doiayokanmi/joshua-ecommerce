@@ -13,7 +13,7 @@ import { categories } from "@/util";
 const Footer = () => {
   return (
     <>
-      <footer className="text-sm lg:px-12 bg-gray-100 p-4 space-y-4 space-x-4">
+      <footer className="text-sm lg:px-12 bg-gray-50 p-4 space-y-4 space-x-4">
         <div className="flex flex-col lg:flex-row justify-between">
           <div className="lg:pe-4 mb-4">
             <Heading title="CONTACT INFO" />
