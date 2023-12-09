@@ -5,10 +5,12 @@ import React, { useState } from "react";
 import Product from "./card/Product";
 import Heading from "./Heading";
 
-const Trending = () => {
+const Trending = ({toastFunc}) => {
   const [currentTab, setCurrentTab] = useState(0);
+  
   return (
     <>
+    
       <div className="basis-3/4">
         <div className="flex justify-between">
           <Heading title="trending items" />
@@ -33,25 +35,29 @@ const Trending = () => {
             basis="basis-1/2"
             image={"/image/products/Simple Product.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2"
             image={"/image/products/plamco.png"}
             title="Polite In Of In Oh Needed Itself Silent Course Gave Read"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2"
             image={"/image/products/watch.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
         </div>
       </div>

@@ -8,10 +8,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@nextui-org/react";
 import { motion } from "framer-motion";
+import { useAppSelector } from "../../redux/hooks";
 
 const Navbar = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const cart = useAppSelector((state) => state.cart.cartArray);
 
   return (
     <>
@@ -66,7 +68,7 @@ const Navbar = () => {
         </motion.div>
 
         <Link className="flex items-center p-4 space-x-8" href={"/register"}>
-          <Badge content="" size="sm" placement="top-left" color="danger">
+          <Badge content={cart.length} size="sm" placement="top-left" color="danger">
             <ShoppingCart className="mr-2" size={18} />
           </Badge>{" "}
           My Cart

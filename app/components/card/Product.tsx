@@ -2,27 +2,42 @@ import Image from "next/image";
 import React from "react";
 import { ShoppingBasket, Eye } from "lucide-react";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { addToCart } from "@/redux/features/cartSlice";
+import { toast } from "react-toastify";
 
 interface props {
   image: string;
   title: string;
-  price: string;
+  price: number;
   basis: string;
+  func: ()=>void;
 }
 
-const Product = ({ image, title, price, basis }: props) => {
+const Product = ({ image, title, price, basis, func }: props) => {
+  const cart = useAppSelector((state) => state.cart.cartArray);
+  const dispatch = useAppDispatch();
+  const quantity = 1;
+
+  const addCart = () => {
+    dispatch(addToCart(item));
+    func();
+  };
+
+  const item = {
+    image,
+    title,
+    price,
+    quantity,
+  };
   return (
     <>
+    
       <div
         className={`${basis} text-xs lg:text-base p-2 group transition-all mt-4 ease-in-out border-r border-b space-x-2 flex flex-col lg:flex-row`}
       >
         <div className="basis-1/2 flex-1 relative">
-          <Image
-            src={image}
-            width={1200}
-            height={350}
-            alt=""
-          />
+          <Image src={image} width={1200} height={350} alt="" />
 
           <Eye
             size={36}
@@ -31,7 +46,9 @@ const Product = ({ image, title, price, basis }: props) => {
         </div>
 
         <div className="basis-1/2 flex flex-col justify-between lg:justify-start flex-1">
-          <Link href={'/'} className="max-h-12 text-clip overflow-hidden">{title}</Link>
+          <Link href={"/"} className="max-h-12 text-clip overflow-hidden">
+            {title}
+          </Link>
 
           <div className="my-4">
             <p className="flex">❤💕💕❤❤</p>
@@ -39,7 +56,10 @@ const Product = ({ image, title, price, basis }: props) => {
           </div>
 
           <div className="flex  space-x-1">
-            <button className="rounded flex-1 p-2 text-xs capitalize flex justify-center items-center bg-black hover:bg-primary text-white">
+            <button
+              onClick={addCart}
+              className="rounded flex-1 p-2 text-xs capitalize flex justify-center items-center bg-black hover:bg-primary text-white"
+            >
               <ShoppingBasket className="mr-1 hidden lg:block" size={14} />
               Add to cart
             </button>

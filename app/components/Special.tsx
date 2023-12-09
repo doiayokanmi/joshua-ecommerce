@@ -3,10 +3,12 @@ import React from "react";
 import Heading from "./Heading";
 import Product from "./card/Product";
 
-const Special = () => {
+const Special = ({toastFunc}) => {
+  
   return (
     <>
       <section className="lg:px-12 p-4">
+      
         <Image
           src={"/image/banner_top.jpg"}
           className="mb-4"
@@ -22,37 +24,43 @@ const Special = () => {
             basis="basis-1/2 lg:basis-1/3"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2 lg:basis-1/3"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2 lg:basis-1/3"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2 lg:basis-1/3"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2 lg:basis-1/3"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
           <Product
             basis="basis-1/2 lg:basis-1/3"
             image={"/image/products/polite.png"}
             title="Simple product"
-            price="125.56"
+            price={125.56}
+            func={toastFunc}
           />
         </div>
       </section>
