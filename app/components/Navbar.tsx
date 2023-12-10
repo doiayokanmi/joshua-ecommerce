@@ -32,7 +32,7 @@ const Navbar = () => {
 
         <Link
           className="text-gray-600 font-normal flex items-center"
-          href={"/Auth/register"}
+          href={"/Auth/signIn"}
         >
           <Lock className="mr-2" size={12} />
           Login or register

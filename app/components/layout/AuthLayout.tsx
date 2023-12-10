@@ -32,7 +32,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
               />
             </Link>
 
-            <div className="flex flex-col items-center justify-center h-full">
+            <div className="flex mt-4 flex-col items-center justify-center h-full">
               {children}
             </div>
           </motion.div>
