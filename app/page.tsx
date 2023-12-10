@@ -21,7 +21,6 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <ToastContainer />
         <Navbar />
         <Hero />
         <motion.section

@@ -18,7 +18,9 @@ const Navbar = () => {
   return (
     <>
       <div className="flex justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
+        <Link href='/'>
         <Image src={"/image/logo.png"} width={80} height={50} alt="logo" />
+        </Link>
 
         <div className="hidden lg:flex justify-between border border-primary w-1/2">
           <input type="text" className="p-2 flex-1 border outline-0" />
@@ -30,7 +32,7 @@ const Navbar = () => {
 
         <Link
           className="text-gray-600 font-normal flex items-center"
-          href={"/register"}
+          href={"/Auth/register"}
         >
           <Lock className="mr-2" size={12} />
           Login or register
