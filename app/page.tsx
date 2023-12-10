@@ -2,16 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toast, ToastContainer } from 'react-toastify';
-import Navbar from './components/Navbar';
+import { toast } from 'react-toastify';
 import Hero from './components/Hero';
 import Trending from './components/Trending';
 import Special from './components/Special';
 import Heading from './components/Heading';
 import CenterAds from './components/CenterAds';
-import Footer from './components/Footer';
-import Layout from './components/layout/Layout';
 import 'react-toastify/dist/ReactToastify.css';
+import PageLayout from './components/layout/PageLayout';
 
 export default function Home() {
   const toastFunc = () => {
@@ -20,8 +18,7 @@ export default function Home() {
 
   return (
     <>
-      <Layout>
-        <Navbar />
+      <PageLayout>
         <Hero />
         <motion.section
           initial={{ x: -1000 }}
@@ -36,8 +33,7 @@ export default function Home() {
         </motion.section>
         <Special toastFunc={toastFunc} />
         <CenterAds />
-        <Footer />
-      </Layout>
+      </PageLayout>
     </>
   );
 }

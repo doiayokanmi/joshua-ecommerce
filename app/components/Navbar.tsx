@@ -69,7 +69,7 @@ const Navbar = () => {
           ))}
         </motion.div>
 
-        <Link className="flex items-center p-4 space-x-8" href={"/register"}>
+        <Link className="flex items-center p-4 space-x-8" href={"/cart"}>
           <Badge content={cart.length} size="sm" placement="top-left" color="danger">
             <ShoppingCart className="mr-2" size={18} />
           </Badge>{" "}

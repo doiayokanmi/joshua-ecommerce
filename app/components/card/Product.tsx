@@ -4,7 +4,6 @@ import { ShoppingBasket, Eye } from "lucide-react";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
-import { toast } from "react-toastify";
 
 interface props {
   image: string;
