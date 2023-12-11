@@ -38,21 +38,22 @@ const Page = () => {
   return (
     <>
       <PageLayout>
-        <section className="lg:p-12 p-4">
-          <div className="flex justify-center mb-4 items-center">
-            <h1 className="text-primary mr-2 text-center text-3xl font-bold">
-              Cart
-            </h1>
-            <ShoppingBag />
-          </div>
+        <section className="lg:p-12 p-4 bg-gray-100">
 
           {cart.length === 0 ? (
             <div className="flex justify-center">
               <p className="text-center text-2xl">Your cart is empty.</p>
             </div>
           ) : (
+            <section className=''>
+              <div className="flex justify-center  mb-4 items-center">
+            <h1 className="text-primary mr-2 text-center text-3xl font-bold">
+              Cart
+            </h1>
+            <ShoppingBag />
+          </div>
             <div className="flex flex-col lg:flex-row">
-              <div className="basis-2/3 lg:pe-4">
+              <div className="basis-2/3 lg:me-4">
                 {cart.map((cartItem, index) => (
                   <CartCard
                     key={index}
@@ -84,7 +85,7 @@ const Page = () => {
               </div>
 
               <div className="basis-1/3">
-                <div className="text-white p-4 bg-primary">
+                <div className="text-white shadow-lg p-4 rounded-lg bg-primary">
                   <h1 className="text-2xl pb-4 font-bold">Cart Checkout</h1>
                   <p>
                     Ready to make your purchase? Click `Checkout` to breeze
@@ -106,6 +107,7 @@ const Page = () => {
                 </div>
               </div>
             </div>
+            </section>
           )}
         </section>
       </PageLayout>

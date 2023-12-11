@@ -66,13 +66,13 @@ export default function Modal({
                         className="p-2 flex items-center text-white bg-primary rounded"
                         onClick={closeModal}
                       >
-                        <FaXmark className="mr-2" /> No, I want to continue
+                        <FaXmark className="mr-2" />No<span className='hidden lg:block'>, I want to continue</span>
                       </button>
                       <button
                         className="p-2 flex items-center text-white bg-red-500 rounded"
                         onClick={func}
                       >
-                        <IoMdCheckmark className="mr-2" /> Yes, Clear it
+                        <IoMdCheckmark className="mr-2" />Yes<span className='hidden lg:block'>, Clear it</span> 
                       </button>
                     </div>
                   </Dialog.Panel>

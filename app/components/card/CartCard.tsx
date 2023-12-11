@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Trash, PlusSquare, MinusSquare } from "lucide-react";
+import { Trash, Plus, Minus } from "lucide-react";
 import Image from "next/image";
-import { removeFromCart, updateCartItemQuantity } from "@/redux/features/cartSlice";
+import {
+  removeFromCart,
+  updateCartItemQuantity,
+} from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,8 +27,8 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
   const [subTotal, setSubTotal] = useState(newQty * price);
 
   useEffect(() => {
-    const newSubTotal = Number((newQty * price).toFixed(2));
-    setSubTotal(newSubTotal);
+    let newSub = (Number(newQty * price)).toFixed(2);
+    setSubTotal(newSub);
   }, [newQty, price]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,13 +44,12 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
   const incrementQty = () => {
     setNewQty((prevQty) => prevQty + 1);
     dispatch(updateCartItemQuantity({ id, quantity: newQty }));
-
-  }
+  };
 
   const decrementQty = () => {
     setNewQty((prevQty) => Math.max(prevQty - 1, 1));
     dispatch(updateCartItemQuantity({ id, quantity: newQty }));
-  }
+  };
 
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(index));
@@ -56,31 +58,46 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row space-x-4 odd:bg-gray-50 p-2 font- justify-between items-center">
-        <div className="basis-1/2 flex items-center">
-          <Image src={image} className="" width={100} height={100} alt={""} />
-          <h1 className="text-primary ps-2">{title}</h1>
+      <div className="shadow-lg p-4 rounded mb-3 bg-white">
+        <div className="flex flex-col lg:flex-row space-x-4 justify-between items-center">
+          <div className="flex  items-center">
+            <Image src={image} className="" width={100} height={100} alt={""} />
+            <div className="ps-2 ">
+              <h1 className="">{title}</h1>
+              <p className='text-xs lg:text-base'>Price: #{price}</p>
+            </div>
+          </div>
+          <p className="text-2xl font-bold">#{subTotal}</p>
         </div>
-        <div className="basis-1/2 flex flex-1 w-full py-2 justify-between">
-          <p className="">#{price}</p>
-
+        <div className="flex mt-3 justify-between items-center">
           <div className="flex items-center">
-            <MinusSquare className="cursor-pointer" onClick={decrementQty} />
-
+            <button
+              className="text-white rounded font-bold p-1 bg-primary"
+              onClick={decrementQty}
+            >
+              <Minus />
+            </button>
             <input
               type="text"
               inputMode="numeric"
               pattern="[0-9]*"
               value={newQty}
               onChange={handleInputChange}
-              className="text-primary text-center w-[34px] border outline-0"
+              className="text-primary text-center w-[44px] border-0 outline-0"
             />
-            <PlusSquare className="cursor-pointer" onClick={incrementQty} />
+            <button
+              className="text-white rounded font-bold p-1 bg-primary"
+              onClick={incrementQty}
+            >
+              <Plus />
+            </button>
           </div>
-          <p className="">#{subTotal}</p>
-          <div onClick={handleRemoveFromCart} className="cursor-pointer">
-            <Trash size={24} />
-          </div>
+          <button
+            onClick={handleRemoveFromCart}
+            className="p-1 lg:px-2 flex uppercase font-semibold items-center rounded shadow-lg text-white bg-red-500"
+          >
+            <Trash className="mr-2" /> remove
+          </button>
         </div>
       </div>
     </>
