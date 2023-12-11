@@ -19,12 +19,16 @@ interface Props {
 const CartCard = ({ title, price, image, id, quantity }: Props) => {
   const dispatch = useAppDispatch();
   const [newQty, setNewQty] = useState(quantity);
+  const [subTotal, setSubTotal] = useState(newQty * price)
 
   useEffect(() => {
-    if (Number.isNaN(newQty)) {
+    if (Number.isNaN(newQty) || newQty < 1) {
       setNewQty(1);
     }
-  }, [newQty]);
+    setSubTotal(newQty * price)
+  }, [newQty, price]);
+
+
 
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(id));
@@ -53,7 +57,7 @@ const CartCard = ({ title, price, image, id, quantity }: Props) => {
             />
             <MinusSquare />
           </div>
-          <p className="">122</p>
+          <p className="">#{subTotal}</p>
           <div onClick={handleRemoveFromCart} className="cursor-pointer">
             <Trash size={24} />
           </div>
