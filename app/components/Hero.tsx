@@ -17,7 +17,7 @@ const Hero = () => {
         transition={{ duration: 0.5 }}
         className="lg:px-12 p-4"
       >
-        <div className="border rounded py-4 pe-4 flex">
+        <div className="border rounded lg:py-4 lg:pe-4 flex">
           <div className="basis-1/4 absolute lg:static h-0 lg:h-auto overflow-hidden">
             <p className="flex uppercase p-2 px-4 font-bold items-center">
               <Blinds size={14} className="mr-3" />
@@ -28,7 +28,7 @@ const Hero = () => {
               <Link
                 key={index}
                 href={category.linkTo}
-                className="flex text-gray-600 items-center p-2 px-4 hover:shadow hover:text-primary"
+                className="flex text-gray-600 items-center pt-2 px-4 hover:shadow hover:text-primary"
               >
                 <Check size={14} className="mr-3" />
 
@@ -36,7 +36,7 @@ const Hero = () => {
               </Link>
             ))}
           </div>
-          <div className="basis-3/4 flex-1 flex ps-4 overflow-hidden">
+          <div className="basis-3/4 flex-1 flex lg:ps-4 overflow-hidden">
             <div className="min-w-full">
               <Image
                 width={1200}

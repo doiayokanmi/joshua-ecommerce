@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // Define a type for the slice state
 interface Item {
+  id: number;
   price: number;
   quantity: number;
   image: string;
@@ -27,11 +28,23 @@ export const cartSlice = createSlice({
     removeFromCart: (state, action: PayloadAction<number>) => {
         state.cartArray.splice(action.payload, 1);
     },
-
+    resetCart: (state) => {
+      state.cartArray = [];
+    },
+    updateCartItemQuantity: (
+      state,
+      action: PayloadAction<{ id: number; quantity: number }>
+    ) => {
+      const { id, quantity } = action.payload;
+      const updatedCartArray = state.cartArray.map((item) =>
+        item.id === id ? { ...item, quantity } : item
+      );
+      state.cartArray = updatedCartArray;
+    },
   }
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, resetCart, updateCartItemQuantity } = cartSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCart = (state: RootState) => state.cart.cartArray

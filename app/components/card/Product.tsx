@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { ShoppingBasket, Eye } from "lucide-react";
 import Link from "next/link";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,18 +13,27 @@ interface props {
   title: string;
   price: number;
   basis: string;
+  id: number;
 }
 
 const Product = ({ image, title, price, basis }: props) => {
+  const cart = useAppSelector((state) => state.cart.cartArray);
   const dispatch = useAppDispatch();
   const quantity = 1;
 
   const addCart = () => {
-    dispatch(addToCart(item));
-    toast.success(`${title} added to cart`)
+    const findItem = cart.find(itemAvailable => itemAvailable.title === title);
+    
+    if (findItem) {
+      toast.error(`${title} already in cart`);
+    } else {
+      dispatch(addToCart(item));
+      toast.success(`${title} added to cart`);
+    }
   };
 
   const item = {
+    id: cart.length + 1,
     image,
     title,
     price,
