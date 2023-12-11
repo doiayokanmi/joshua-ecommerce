@@ -24,17 +24,17 @@ const CartCard = ({ title, price, image, id, quantity }: Props) => {
   return (
     <>
       <div className="flex space-x-4 odd:bg-gray-50 p-4 font-bold justify-between items-center">
-        <div onClick={handleRemoveFromCart} className="basis-1/8 cursor-pointer">
-        <Trash size={24} />
-        </div>
+        
+        <div className="basis-3/8 flex flex-col lg:flex-row">
         <Image
           src={image}
-          className="basis-1/8"
+          className=""
           width={100}
           height={100}
           alt={""}
         />
-        <h1 className="text-primary basis-2/8 text-xl">{title}</h1>
+        <h1 className="text-primary">{title}</h1>
+        </div>
         <p>#{price}</p>
 
         <div className="flex items-center basis-2/8">
@@ -42,9 +42,12 @@ const CartCard = ({ title, price, image, id, quantity }: Props) => {
           <input
             type="text"
             value={quantity}
-            className="text-primary max-w-3 p-1 border outline-0"
+            className="text-primary text-center max-w-[34px] p-1 border outline-0"
           />
           <MinusSquare />
+        </div>
+        <div onClick={handleRemoveFromCart} className="basis-1/8 cursor-pointer">
+        <Trash size={24} />
         </div>
       </div>
     </>

@@ -21,7 +21,7 @@ const Page = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row">
-                <div className="basis-2/3 pe-4">
+                <div className="basis-2/3 lg:pe-4">
                     {
                         cart.map((cartItem, index)=> (
 

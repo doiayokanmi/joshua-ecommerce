@@ -21,18 +21,19 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             initial={{ y: 1000 }}
             animate={{ y: 0 }}
             transition={{ duration: 1 }}
-            className="basis-1/2 relative flex-1 bg-gray-50 lg:px-32 p-4 h-full"
+            className="basis-1/2 relative overflow-y-auto  flex-1 bg-gray-50 lg:px-32 p-4 h-full"
           >
-            <Link className="absolute top-4 left-4 lg:right-4" href="/">
+            
+
+            <div className="flex flex-col items-center justify-center min-h-full">
+            <Link className="w-full flex justify-center mb-8" href="/">
               <Image
                 src={"/image/logo.png"}
-                width={80}
+                width={180}
                 height={50}
                 alt="logo"
               />
             </Link>
-
-            <div className="flex mt-4 flex-col items-center justify-center h-full">
               {children}
             </div>
           </motion.div>

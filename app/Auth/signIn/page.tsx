@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import AuthLayout from "@/app/components/layout/AuthLayout";
 import Button from "@/app/components/ui/Button";
@@ -11,15 +11,17 @@ const page = () => {
   return (
     <>
       <AuthLayout>
-        <Avatar showFallback className="w-20 mb-4 h-20 rounded-full" />
-        <h1 className="text-primary font-bold">Login Account</h1>
         <p className="text-center text-sm py-2">
           Unlock deals and effortless shopping. Log in for exclusive offers and
           secure transactions. Elevate your online experience with confidence in
           a click.
         </p>
 
-        <div className="w-full py-4">
+        <div className="w-full border-2 mt-4 rounded p-4">
+          <h1 className="text-primary text-center pb-4 font-bold">
+            Login Account
+          </h1>
+
           <Input
             placeholder="Enter your username or email"
             isPassword={false}
