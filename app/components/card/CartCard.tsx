@@ -58,13 +58,13 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
 
   return (
     <>
-      <div className="shadow-lg p-4 rounded mb-3 bg-white">
+      <div className="shadow-lg text-xs lg:text-base p-4 rounded mb-3 bg-white">
         <div className="flex space-x-4 justify-between ">
           <div className="flex">
             <Image src={image} className="" width={100} height={100} alt={""} />
             <div className="ps-2 ">
               <h1 className="">{title}</h1>
-              <p className='text-xs lg:text-base'>Price: <span className='text-primary font-semibold'>#{price}</span></p>
+              <p className='py-4'>Price: <span className='text-primary font-semibold'>#{price}</span></p>
             </div>
           </div>
           <p className="lg:text-xl font-bold">#{subTotal}</p>

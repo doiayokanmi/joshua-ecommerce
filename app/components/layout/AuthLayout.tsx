@@ -25,8 +25,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           >
             
 
-            <div className="flex flex-col items-center justify-center min-h-full">
-            <Link className="w-full flex justify-center mb-8" href="/">
+            <div className="flex flex-col items-center justify-center min-h-[700px]">
+            <Link className="w-full flex justify-center my-8" href="/">
               <Image
                 src={"/image/logo.png"}
                 width={180}
