@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { toast } from 'react-toastify';
 import Hero from './components/Hero';
 import Trending from './components/Trending';
 import Special from './components/Special';
@@ -12,9 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import PageLayout from './components/layout/PageLayout';
 
 export default function Home() {
-  const toastFunc = () => {
-    toast.success(`Added to cart`);
-  };
 
   return (
     <>
@@ -29,9 +25,9 @@ export default function Home() {
           <div className="basis-1/4">
             <Heading title="Popular items" />
           </div>
-          <Trending toastFunc={toastFunc} />
+          <Trending />
         </motion.section>
-        <Special toastFunc={toastFunc} />
+        <Special />
         <CenterAds />
       </PageLayout>
     </>

@@ -38,13 +38,15 @@ const Page = () => {
                 ))}
               </div>
 
-              <div className="basis-1/3 text-white p-4 bg-primary">
+              <div className="basis-1/3">
+              <div className="text-white p-4 bg-primary">
                 <h1 className="text-2xl pb-4 font-bold">Cart Checkout</h1>
                 <p>
                   Ready to make your purchase? Click `Checkout` to breeze
                   through and complete your order. We`re excited to get your
                   goodies on their way to you! 🛍️💳
                 </p>
+              </div>
               </div>
             </div>
           )}

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Product from "./card/Product";
 import Heading from "./Heading";
 
-const Trending = ({toastFunc}) => {
+const Trending = () => {
   const [currentTab, setCurrentTab] = useState(0);
   
   return (
@@ -33,31 +33,27 @@ const Trending = ({toastFunc}) => {
         <div className="border flex flex-wrap">
           <Product
             basis="basis-1/2"
-            image={"/image/products/Simple Product.png"}
-            title="Simple product"
+            image={"/image/products/noodles.png"}
+            title="Delicious Noodles with Sauces entail in it"
             price={125.56}
-            func={toastFunc}
           />
           <Product
             basis="basis-1/2"
-            image={"/image/products/plamco.png"}
-            title="Polite In Of In Oh Needed Itself Silent Course Gave Read"
+            image={"/image/products/rice.jpeg"}
+            title="A bag of rice in a container for soft eating "
             price={125.56}
-            func={toastFunc}
           />
           <Product
             basis="basis-1/2"
-            image={"/image/products/watch.png"}
-            title="Simple product"
+            image={"/image/products/5ltr.png"}
+            title="5 litres of cooking oil for tasty cooking"
             price={125.56}
-            func={toastFunc}
           />
           <Product
             basis="basis-1/2"
-            image={"/image/products/polite.png"}
-            title="Simple product"
+            image={"/image/products/maggi.png"}
+            title="A pack of Maggi seasoning cube"
             price={125.56}
-            func={toastFunc}
           />
         </div>
       </div>

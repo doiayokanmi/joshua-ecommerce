@@ -2,25 +2,26 @@ import Image from "next/image";
 import React from "react";
 import { ShoppingBasket, Eye } from "lucide-react";
 import Link from "next/link";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 interface props {
   image: string;
   title: string;
   price: number;
   basis: string;
-  func: ()=>void;
 }
 
-const Product = ({ image, title, price, basis, func }: props) => {
-  const cart = useAppSelector((state) => state.cart.cartArray);
+const Product = ({ image, title, price, basis }: props) => {
   const dispatch = useAppDispatch();
   const quantity = 1;
 
   const addCart = () => {
     dispatch(addToCart(item));
-    func();
+    toast.success(`${title} added to cart`)
   };
 
   const item = {
@@ -36,7 +37,7 @@ const Product = ({ image, title, price, basis, func }: props) => {
         className={`${basis} text-xs lg:text-base p-2 group transition-all mt-4 ease-in-out border-r border-b space-x-2 flex flex-col lg:flex-row`}
       >
         <div className="basis-1/2 flex-1 relative">
-          <Image src={image} width={1200} height={350} alt="" />
+          <Image src={image} width={200} height={200} alt="" />
 
           <Eye
             size={36}

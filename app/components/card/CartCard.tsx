@@ -1,24 +1,30 @@
-'use client'
+"use client";
 
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Trash, PlusSquare, MinusSquare } from "lucide-react";
 import Image from "next/image";
 import { removeFromCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import {toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props {
-    title: string;
-    price: number;
-    image: string;
-    id: number;
-    quantity: number;
+  title: string;
+  price: number;
+  image: string;
+  id: number;
+  quantity: number;
 }
 
 const CartCard = ({ title, price, image, id, quantity }: Props) => {
   const dispatch = useAppDispatch();
   const [newQty, setNewQty] = useState(quantity);
+
+  useEffect(() => {
+    if (Number.isNaN(newQty)) {
+      setNewQty(1);
+    }
+  }, [newQty]);
 
   const handleRemoveFromCart = () => {
     dispatch(removeFromCart(id));
@@ -27,32 +33,30 @@ const CartCard = ({ title, price, image, id, quantity }: Props) => {
 
   return (
     <>
-      <div className="flex space-x-4 odd:bg-gray-50 p-4 font-bold justify-between items-center">
-        
-        <div className="basis-3/8 flex flex-col items-center lg:flex-row">
-        <Image
-          src={image}
-          className=""
-          width={100}
-          height={100}
-          alt={""}
-        />
-        <h1 className="text-primary">{title}</h1>
+      <div className="flex flex-col lg:flex-row space-x-4 odd:bg-gray-50 p-4 font-bold justify-between items-center">
+        <div className="basis-1/2 flex items-center">
+          <Image src={image} className="" width={100} height={100} alt={""} />
+          <h1 className="text-primary ps-2">{title}</h1>
         </div>
-        <p>#{price}</p>
+        <div className="basis-1/2 flex flex-1 w-full py-2 justify-between">
+          <p className="">#{price}</p>
 
-        <div className="flex items-center basis-2/8">
-          <PlusSquare />
-          <input
-            type="number"
-            value={newQty}
-            onChange={(e)=>setNewQty(parseInt(e.target.value))}
-            className="text-primary text-center w-[34px] border outline-0"
-          />
-          <MinusSquare />
-        </div>
-        <div onClick={handleRemoveFromCart} className="basis-1/8 cursor-pointer">
-        <Trash size={24} />
+          <div className="flex items-center">
+            <PlusSquare />
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              value={newQty}
+              onChange={(e) => setNewQty(parseInt(e.target.value))}
+              className="text-primary text-center w-[34px] border outline-0"
+            />
+            <MinusSquare />
+          </div>
+          <p className="">122</p>
+          <div onClick={handleRemoveFromCart} className="cursor-pointer">
+            <Trash size={24} />
+          </div>
         </div>
       </div>
     </>
