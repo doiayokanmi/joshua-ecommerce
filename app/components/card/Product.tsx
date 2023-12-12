@@ -43,7 +43,7 @@ const Product = ({ image, title, price }: props) => {
       <section
         className={` text-xs lg:text-base group transition-all mt-4 mb-2 ease-in-out`}
       >
-        <div className={`flex w-[150px] relative flex-col shadow-md ease-in-out transition-all lg:hover:scale-101 rounded bg-white`}>
+        <div className={`flex w-[150px] relative flex-col ease-in-out transition-all lg:hover:scale-101 rounded bg-white`}>
           <div className="basis-1/2  flex-1 relative">
             <Image src={image} className="rounded" width={150} height={150} alt="" />
 

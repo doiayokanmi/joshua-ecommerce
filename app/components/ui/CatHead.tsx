@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
 
-const CatHead = () => {
+const CatHead = ({title, extraStyle}: {title: string, extraStyle: string}) => {
   return (
     <>
-        <div className="flex uppercase justify-between p-3 bg-red-600 text-white font-bold">
+        <div className={`flex uppercase justify-between text-xs lg:text-sm p-3 ${extraStyle} text-white font-bold`}>
             <h1 className="">
-                top selling
+                {title}
             </h1>
 
-            <Link href='/'>see more</Link>
+            <Link className='underline' href='/'>see more</Link>
         </div>
     </>
   )

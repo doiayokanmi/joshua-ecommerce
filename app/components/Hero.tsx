@@ -37,7 +37,7 @@ const Hero = () => {
             ))}
           </div>
           <div className="basis-3/4 flex-1 flex lg:ps-4 overflow-hidden">
-            <div className="min-w-full">
+            <div className="w-full">
               <Image
                 width={1200}
                 height={400}
