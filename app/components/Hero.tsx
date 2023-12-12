@@ -17,8 +17,8 @@ const Hero = () => {
         transition={{ duration: 0.5 }}
         className="lg:px-12 p-4"
       >
-        <div className="border rounded lg:py-4 lg:pe-4 flex">
-          <div className="basis-1/4 absolute lg:static h-0 lg:h-auto overflow-hidden">
+        <div className="border bg-white rounded lg:py-4 lg:pe-4 flex">
+          <div className="basis-1/4 rounded bg-white absolute lg:static h-0 lg:h-auto overflow-hidden">
             <p className="flex uppercase p-2 px-4 font-bold items-center">
               <Blinds size={14} className="mr-3" />
               <span>All Categories</span>

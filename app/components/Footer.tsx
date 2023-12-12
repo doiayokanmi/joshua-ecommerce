@@ -6,7 +6,7 @@ import {
   TimerIcon,
 } from "lucide-react";
 import React from "react";
-import Heading from "./Heading";
+import Heading from "./ui/Heading";
 import Link from "next/link";
 import { categories } from "@/util";
 

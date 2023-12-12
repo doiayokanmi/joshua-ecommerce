@@ -3,7 +3,7 @@
 import { trending } from "@/util";
 import React, { useState } from "react";
 import Product from "./card/Product";
-import Heading from "./Heading";
+import Heading from "./ui/Heading";
 
 const Trending = () => {
   const [currentTab, setCurrentTab] = useState(0);

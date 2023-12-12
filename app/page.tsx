@@ -5,10 +5,11 @@ import { motion } from 'framer-motion';
 import Hero from './components/Hero';
 import Trending from './components/Trending';
 import Special from './components/Special';
-import Heading from './components/Heading';
+import Heading from './components/ui/Heading';
 import CenterAds from './components/CenterAds';
 import 'react-toastify/dist/ReactToastify.css';
 import PageLayout from './components/layout/PageLayout';
+import TopSelling from './components/ui/TopSelling';
 
 export default function Home() {
 
@@ -16,6 +17,8 @@ export default function Home() {
     <>
       <PageLayout>
         <Hero />
+        <TopSelling />
+
         <motion.section
           initial={{ x: -1000 }}
           animate={{ x: 0 }}

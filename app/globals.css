@@ -5,7 +5,29 @@
 :root {
   --primary: #00B4D8;
   --black: #242528;
+  --faded: #CAF0F8;
 }
+
+.nobar::-webkit-scrollbar {
+  width: 0px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nobar::-webkit-scrollbar:hover {
+  opacity: 0;
+}
+
+.nobar::-webkit-scrollbar-track {
+  border-radius: 0px;
+}
+
+.nobar::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  border: 0px;
+  cursor: pointer;
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {

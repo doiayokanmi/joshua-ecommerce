@@ -12,7 +12,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: 'var(--primary)',
-        black: 'var(--black)'
+        black: 'var(--black)',
+        faded: 'var(--faded)'
       },
       
     },
