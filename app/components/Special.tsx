@@ -33,8 +33,8 @@ const Special = ({
 
   return (
     <>
-      <section className="lg:px-12 lg:rounded pt-2 shadow-lg">
-        <div className="bg-white lg:rounded overflow-x-hidden">
+      <section className="lg:px-12 lg:rounded pt-2">
+        <div className="bg-white lg:rounded shadow-lg overflow-x-hidden">
           <CatHead title={title} extraStyle={extraStyle} />
 
           <div className="px-4 relative overflow-x-hidden">

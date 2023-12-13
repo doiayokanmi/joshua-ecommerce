@@ -9,6 +9,7 @@ import Heading from './components/ui/Heading';
 import CenterAds from './components/CenterAds';
 import 'react-toastify/dist/ReactToastify.css';
 import PageLayout from './components/layout/PageLayout';
+import Category from './components/Category';
 
 export default function Home() {
 
@@ -16,6 +17,8 @@ export default function Home() {
     <>
       <PageLayout>
         <Hero />
+
+        <Category />
         <Special title='Best rated' extraStyle='bg-red-500' />
         <Special title='Top Selling' extraStyle='bg-green-500' />
         <Special title='black Friday' extraStyle='bg-black' />

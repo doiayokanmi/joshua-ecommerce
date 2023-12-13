@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,6 +9,10 @@
   --black: #242528;
   --faded: #CAF0F8;
   --darkblue: #03045E;
+}
+
+* {
+  font-family: 'Jost', sans-serif;
 }
 
 .nobar::-webkit-scrollbar {

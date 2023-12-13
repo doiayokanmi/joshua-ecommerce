@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={'bg-gray-100 lg:bg-dark'}>
+      <body className={'bg-gray-100'}>
       <ToastContainer />
 
         <ReduxProvider>
