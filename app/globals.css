@@ -6,20 +6,24 @@
   --primary: #00B4D8;
   --black: #242528;
   --faded: #CAF0F8;
+  --darkblue: #03045E;
 }
 
 .nobar::-webkit-scrollbar {
   width: 0px;
+  height: 0;
   opacity: 0;
   cursor: pointer;
 }
 
 .nobar::-webkit-scrollbar:hover {
   opacity: 0;
+  width: 0;
 }
 
 .nobar::-webkit-scrollbar-track {
   border-radius: 0px;
+  width: 0;
 }
 
 .nobar::-webkit-scrollbar-thumb {

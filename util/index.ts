@@ -69,3 +69,5 @@ export const categories = [
 export const trending = [
     'Men fashion', 'women fashion', 'handbag', 'bag', 'jean', 'shirt' 
 ]
+
+export const images = ["/image/1.jpg", "/image/2.jpg", "/image/3.jpg"];

@@ -13,7 +13,8 @@ const config: Config = {
       colors: {
         primary: 'var(--primary)',
         black: 'var(--black)',
-        faded: 'var(--faded)'
+        faded: 'var(--faded)',
+        dark: 'var(--darkblue)'
       },
       
     },

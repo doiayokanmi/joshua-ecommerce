@@ -57,9 +57,11 @@ const Product = ({ image, title, price }: props) => {
             <Link href={"/"} className="truncate text-sm">
               {title}
             </Link>
+            <p className="font-bold">${price}</p>
 
-            <div className="absolute right-0 top-2 text-sm p-1 bg-primary">
-              <p className="font-bold text-white">${price}</p>
+
+            <div className="absolute right-0 top-2 text-xs p-1 bg-red-700">
+              <p className="text-faded">-17%</p>
             </div>
 
             {/* <div className="flex  space-x-1">

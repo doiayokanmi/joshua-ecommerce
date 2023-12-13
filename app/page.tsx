@@ -17,17 +17,6 @@ export default function Home() {
       <PageLayout>
         <Hero />
         <Special title='Best rated' extraStyle='bg-red-500' />
-        <motion.section
-          initial={{ x: -1000 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col lg:px-12 px-4 lg:space-x-8 lg:flex-row"
-        >
-          <div className="basis-1/4">
-            <Heading title="Popular items" />
-          </div>
-          <Trending />
-        </motion.section>
         <Special title='Top Selling' extraStyle='bg-green-500' />
         <Special title='black Friday' extraStyle='bg-black' />
 
