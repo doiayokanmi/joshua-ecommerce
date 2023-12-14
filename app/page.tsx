@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import PageLayout from './components/layout/PageLayout';
 import Category from './components/Category';
 import Image from 'next/image';
+import OtherCat from './components/OtherCat';
 
 export default function Home() {
 
@@ -26,6 +27,10 @@ export default function Home() {
         <Special title='black Friday' extraStyle='bg-black' />
 
         <CenterAds />
+        <OtherCat />
+
+        <Special title='Recommended for you' extraStyle='bg-warning-500' />
+
       </PageLayout>
     </>
   );

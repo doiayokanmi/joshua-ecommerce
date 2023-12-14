@@ -42,7 +42,7 @@ const Page = () => {
 
           {cart.length === 0 ? (
             <div className="flex justify-center">
-              <p className="text-center text-2xl">Your cart is empty.</p>
+              <p className="text-center flex justify-center items-center text-4xl h-[200px]">Your cart is empty.</p>
             </div>
           ) : (
             <section className=''>
