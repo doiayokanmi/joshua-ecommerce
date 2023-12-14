@@ -14,6 +14,7 @@ const config: Config = {
         primary: 'var(--primary)',
         black: 'var(--black)',
         faded: 'var(--faded)',
+        overlay: 'var(--overlay)',
         dark: 'var(--darkblue)'
       },
       

@@ -28,28 +28,34 @@ export const links = [
 
 export const categories = [
   {
-    title: "Textiles & Fashion",
-    linkTo: "/textiles",
+    title: "Groceries",
+    linkTo: "/groceries",
+    image: "/image/category/groceries.jpg",
   },
   {
-    title: "Men Wears",
-    linkTo: "/textiles",
+    title: "Grains",
+    linkTo: "/grains",
+    image: "/image/category/grains.png",
   },
   {
-    title: "Electronics & Gadget",
-    linkTo: "/textiles",
+    title: "Spicy Ingredients",
+    linkTo: "/spicy-ingredients",
+    image: "/image/category/spicies.jpg",
   },
   {
-    title: "Packaging & Office",
-    linkTo: "/textiles",
+    title: "Baking Ingredients",
+    linkTo: "/baking-ingredients",
+    image: "/image/category/baking.jpg",
   },
   {
-    title: "Textiles",
-    linkTo: "/textiles",
+    title: "Utensils",
+    linkTo: "/utensils",
+    image: "/image/category/utensil.jpg",
   },
   {
-    title: "Textiles",
-    linkTo: "/textiles",
+    title: "Tubers",
+    linkTo: "/tubers",
+    image: "/image/category/tubers.jpg",
   },
   {
     title: "Textiles",

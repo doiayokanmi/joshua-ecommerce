@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Button from "../ui/Button";
 
 interface props {
   image: string;
@@ -41,7 +42,7 @@ const Product = ({ image, title, price }: props) => {
   return (
     <>
       <section
-        className={` text-xs lg:text-base group transition-all mt-4 mb-2 ease-in-out`}
+        className={`hover:shadow-xl text-xs lg:text-base group transition-all mt-4 mb-2 ease-in-out`}
       >
         <div className={`flex w-[150px] relative flex-col ease-in-out transition-all lg:hover:scale-101 rounded bg-white`}>
           <div className="basis-1/2  flex-1 relative">
@@ -57,28 +58,26 @@ const Product = ({ image, title, price }: props) => {
             <Link href={"/"} className="truncate text-sm">
               {title}
             </Link>
-            <p className="font-bold">${price}</p>
+            <p className="font-bold py-2">${price}</p>
 
+            <button
+                onClick={addCart}
+                className="rounded relative text-xs capitalize bg-black text-white"
+              >
+                <div className="flex relative z-50 p-2 justify-center items-center">
+                <ShoppingBasket className="mr-1 hidden lg:block" size={14} />
+                Add to cart
+                </div>
 
+                <div className="bg-primary h-0 group-hover:h-full transition-all ease-in-out bottom-0 rounded absolute w-full left-0">
+
+                </div>
+              </button>
             <div className="absolute right-0 top-2 text-xs p-1 bg-red-700">
               <p className="text-faded">-17%</p>
             </div>
 
-            {/* <div className="flex  space-x-1">
-              <button
-                onClick={addCart}
-                className="rounded flex-1 p-2 text-xs capitalize flex justify-center items-center bg-black hover:bg-primary text-white"
-              >
-                <ShoppingBasket className="mr-1 hidden lg:block" size={14} />
-                Add to cart
-              </button>
-              <button className="rounded scale-0 group-hover:scale-100 transition-all duration-300 p-2 capitalize bg-black hover:bg-primary hidden lg:block text-white">
-                <ShoppingBasket size={14} />
-              </button>
-              <button className="rounded scale-0 group-hover:scale-100 transition-all duration-300 p-2 capitalize bg-black hover:bg-primary hidden lg:block text-white">
-                <ShoppingBasket size={14} />
-              </button>
-            </div> */}
+            
           </div>
         </div>
       </section>
