@@ -15,6 +15,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useAppSelector((state) => state.cart.cartArray);
 
+  const newCat =  categories.slice(0, 3)
+
   return (
     <>
       <div className="flex relative z-50 bg-white justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
@@ -65,7 +67,7 @@ const Navbar = () => {
             </Link>
 
             {
-              categories.splice(0, 3).map((category, index)=>(
+             newCat.map((category, index)=>(
                 <Link
                 className={`uppercase p-4 hover:bg-black ${
                   currentPage == category.title && "bg-black"
