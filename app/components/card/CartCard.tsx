@@ -64,10 +64,10 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
             <Image src={image} className="" width={100} height={100} alt={""} />
             <div className="ps-2 ">
               <h1 className="">{title}</h1>
-              <p className='py-4'>Price: <span className='text-primary font-semibold'>#{price}</span></p>
+              <p className='py-4'>Price: <span className='text-primary font-semibold'>₦{price}</span></p>
             </div>
           </div>
-          <p className="lg:text-xl font-bold">#{subTotal}</p>
+          <p className="lg:text-xl font-bold">₦{subTotal}</p>
         </div>
         <div className="flex flex-row-reverse mt-3 justify-between items-center">
           <div className="flex items-center">

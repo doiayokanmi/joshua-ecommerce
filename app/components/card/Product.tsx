@@ -59,7 +59,7 @@ const Product = ({ image, title, price }: props) => {
             <Link href={`/product/${title}`} className="truncate text-sm">
               {title}
             </Link>
-            <p className="font-bold py-2">${price}</p>
+            <p className="font-bold py-2">₦{price}</p>
 
             <button
                 onClick={addCart}

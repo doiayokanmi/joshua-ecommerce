@@ -1,11 +1,12 @@
 "use client";
 
 import PageLayout from "@/app/components/layout/PageLayout";
+import Share from "@/app/components/ui/Share";
 import { addToCart } from "@/redux/features/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { ShoppingBasket } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const Page = ({ params }: { params: { product: string } }) => {
   const item = {
@@ -15,6 +16,9 @@ const Page = ({ params }: { params: { product: string } }) => {
     price: 123,
     quantity: 4,
   };
+
+  const url = `localhost:3000/product/${params.product}`;
+  const [imageSrc, setImageSrc] = useState("/image/products/holder.png");
 
   const dispatch = useAppDispatch();
   const addCart = () => {
@@ -32,79 +36,80 @@ const Page = ({ params }: { params: { product: string } }) => {
             <span className="truncate">{params.product}</span>
           </div>
           <div className="flex flex-col mt-4 lg:space-x-4 lg:flex-row">
-            <div className="basis-2/3 bg-white p-4">
+            <div className="basis-2/3 rounded bg-white p-4">
               <div className="flex flex-col lg:flex-row">
-                <div className="basis-1/2 mb-2">
+                <div className="basis-1/2 transition-all ease-in-out mb-2">
                   <Image
-                    src={`/image/products/holder.png`}
+                    src={`${imageSrc}`}
                     width={1500}
                     height={1500}
                     alt=""
                   />
 
                   <div className="flex justify-between mt-2">
-                    <div className="basis-1/4 p-1 last:pe-0">
-                      <Image
-                        src={`/image/products/holder.png`}
-                        width={100}
-                        height={100}
-                        alt=""
-                      />
-                    </div>
-                    <div className="basis-1/4 p-1 last:pe-0">
-                      <Image
-                        src={`/image/products/holder.png`}
-                        width={100}
-                        height={100}
-                        alt=""
-                      />
-                    </div>
-                    <div className="basis-1/4 p-1 last:pe-0">
-                      <Image
-                        src={`/image/products/holder.png`}
-                        width={100}
-                        height={100}
-                        alt=""
-                      />
-                    </div>
-                    <div className="basis-1/4 p-1 last:p-0">
-                      <Image
-                        src={`/image/products/holder.png`}
-                        width={100}
-                        height={100}
-                        alt=""
-                      />
-                    </div>
+                    {[1, 2, 3, 5].map((item, index) => (
+                      <div key={index} className="basis-1/4 p-1 last:pe-0">
+                        <Image
+                          src={`${imageSrc}`}
+                          width={100}
+                          height={100}
+                          alt=""
+                          onMouseOver={() =>
+                            setImageSrc("/image/products/holder.png")
+                          }
+                          onMouseOut={() =>
+                            setImageSrc("/image/products/holder.png")
+                          }
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 <div className="basis-1/2 lg:ps-4">
-                  <h1 className="font-bold capitalize text-2xl">
+                  <h1 className="capitalize">
                     The product title will display here in bold and capitalize
                     just as seen now
                   </h1>
 
-                  <p className="font-semibold py-4 italic">#125</p>
+                  <div className="flex py-4 justify-between items-start">
+                    <p className="italic flex items-end">
+                      <span className="text-4xl font-bold">₦125</span>{" "}
+                      <span>/unit</span>
+                    </p>
 
+                    <p className="text-red-500 ">
+                      -17%
+                    </p>
+                  </div>
 
-                    <div className="group sticky bottom-2">
+                  <p className="mb-4">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Labore aspernatur repudiandae numquam eligendi earum alias
+                    id similique eos placeat facilis? Quae adipisci aspernatur
+                    repudiandae debitis cumque est quaerat a nihil.
+                  </p>
+
+                  <Share url={url} />
+
+                  <div className="group sticky bottom-2">
                     <button
                       disabled
                       onClick={addCart}
-                      className="w-full p-2 capitalize bg-black text-white"
+                      className="w-full rounded-md capitalize bg-primary text-white"
                     >
                       <div className="flex relative z-30 p-2 justify-center items-center">
-                        <ShoppingBasket className="mr-2" />
+                        <ShoppingBasket className="mr-2 absolute left-4" />
                         Add to cart
                       </div>
 
-                      <div className="bg-primary h-0 group-hover:h-full transition-all ease-in-out bottom-0 absolute w-full left-0"></div>
+                      <div className="bg-black rounded h-0 group-hover:h-full transition-all ease-in-out bottom-0 absolute w-full left-0"></div>
                     </button>
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="basis-1/3 bg-white"></div>
+            <div className="basis-1/3 rounded bg-white"></div>
           </div>
         </section>
       </PageLayout>
