@@ -1,22 +1,6 @@
 
 export const links = [
   {
-    title: "Home",
-    linkTo: "/",
-  },
-  {
-    title: "Fashion",
-    linkTo: "/",
-  },
-  {
-    title: "Electronics",
-    linkTo: "/",
-  },
-  {
-    title: "House Appliance",
-    linkTo: "/",
-  },
-  {
     title: "About US",
     linkTo: "/",
   },

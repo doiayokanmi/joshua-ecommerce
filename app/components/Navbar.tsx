@@ -3,7 +3,7 @@
 import React from "react";
 import { useState } from "react";
 import { Lock, ShoppingCart, Search, Menu, X } from "lucide-react";
-import { links } from "@/util";
+import { links, categories } from "@/util";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@nextui-org/react";
@@ -11,13 +11,13 @@ import { motion } from "framer-motion";
 import { useAppSelector } from "../../redux/hooks";
 
 const Navbar = () => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState('Home');
   const [isOpen, setIsOpen] = useState(false);
   const cart = useAppSelector((state) => state.cart.cartArray);
 
   return (
     <>
-      <div className="flex bg-white justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
+      <div className="flex relative z-50 bg-white justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
         <Link href='/'>
         <Image src={"/image/logo.png"} width={80} height={50} alt="logo" />
         </Link>
@@ -39,7 +39,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="relative bg-primary text-xs font-bold flex justify-between items-center lg:px-12 px-4 text-white">
+      <div className="sticky top-0 z-50 bg-primary text-xs font-bold flex justify-between items-center lg:px-12 px-4 text-white">
         <div
           className="cursor-pointer lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -55,14 +55,38 @@ const Navbar = () => {
             isOpen ? "h-[300px]" : "h-0"
           }`}
         >
+          <Link
+              className={`uppercase p-4 hover:bg-black ${
+                currentPage == 'Home' && "bg-black"
+              }`}
+              href={'/'}
+              onClick={() => setCurrentPage('Home')}
+            >Home
+            </Link>
+
+            {
+              categories.splice(0, 3).map((category, index)=>(
+                <Link
+                className={`uppercase p-4 hover:bg-black ${
+                  currentPage == category.title && "bg-black"
+                }`}
+                href={category.linkTo}
+                key={index}
+                onClick={() => setCurrentPage(category.title)}
+              >
+                {category.title}
+              </Link>
+              ))
+            }
+
           {links.map((link, index) => (
             <Link
               className={`uppercase p-4 hover:bg-black ${
-                currentPage == index && "bg-black"
+                currentPage == link.title && "bg-black"
               }`}
               href={link.linkTo}
               key={index}
-              onClick={() => setCurrentPage(index)}
+              onClick={() => setCurrentPage(link.title)}
             >
               {link.title}
             </Link>

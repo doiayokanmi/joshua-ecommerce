@@ -64,7 +64,7 @@ const Product = ({ image, title, price }: props) => {
                 onClick={addCart}
                 className="rounded relative text-xs capitalize bg-black text-white"
               >
-                <div className="flex relative z-50 p-2 justify-center items-center">
+                <div className="flex relative z-30 p-2 justify-center items-center">
                 <ShoppingBasket className="mr-1 hidden lg:block" size={14} />
                 Add to cart
                 </div>
