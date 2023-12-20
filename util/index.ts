@@ -13,45 +13,45 @@ export const links = [
 export const categories = [
   {
     title: "Groceries",
-    linkTo: "/groceries",
+    linkTo: "/category/groceries",
     image: "/image/category/groceries.jpg",
   },
   {
     title: "Grains",
-    linkTo: "/grains",
+    linkTo: "/category/grains",
     image: "/image/category/grains.png",
   },
   {
     title: "Spicy Ingredients",
-    linkTo: "/spicy-ingredients",
+    linkTo: "/category/spicy-ingredients",
     image: "/image/category/spicies.jpg",
   },
   {
     title: "Baking Ingredients",
-    linkTo: "/baking-ingredients",
+    linkTo: "/category/baking-ingredients",
     image: "/image/category/baking.jpg",
   },
   {
     title: "Utensils",
-    linkTo: "/utensils",
+    linkTo: "/category/utensils",
     image: "/image/category/utensil.jpg",
   },
   {
     title: "Tubers",
-    linkTo: "/tubers",
+    linkTo: "/category/tubers",
     image: "/image/category/tubers.jpg",
   },
   {
     title: "Textiles",
-    linkTo: "/textiles",
+    linkTo: "/category/textiles",
   },
   {
     title: "Textiles",
-    linkTo: "/textiles",
+    linkTo: "/category/textiles",
   },
   {
     title: "Textiles",
-    linkTo: "/textiles",
+    linkTo: "/category/textiles",
   },
 ];
 

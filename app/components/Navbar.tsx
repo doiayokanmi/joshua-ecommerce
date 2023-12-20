@@ -72,7 +72,7 @@ const Navbar = () => {
                 className={`uppercase p-4 hover:bg-black ${
                   currentPage == category.title && "bg-black"
                 }`}
-                href={category.linkTo}
+                href={`${category.linkTo}`}
                 key={index}
                 onClick={() => setCurrentPage(category.title)}
               >
