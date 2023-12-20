@@ -15,7 +15,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useAppSelector((state) => state.cart.cartArray);
 
-  const newCat =  categories.slice(0, 3)
+  const newCat =  categories.slice(0, 4)
 
   return (
     <>
@@ -54,7 +54,7 @@ const Navbar = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
           className={`flex transition-all ease-in-out absolute top-12 bg-primary left-0 w-full lg:w-auto lg:static flex-col lg:flex-row lg:h-auto overflow-hidden ${
-            isOpen ? "h-[300px]" : "h-0"
+            isOpen ? "h-[340px]" : "h-0"
           }`}
         >
           <Link

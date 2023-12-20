@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cartSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "../ui/Button";
 
 interface props {
   image: string;
@@ -48,14 +47,16 @@ const Product = ({ image, title, price }: props) => {
           <div className="basis-1/2  flex-1 relative">
             <Image src={image} className="rounded" width={150} height={150} alt="" />
 
+            <Link href={`/product/${title}`}>
             <Eye
               size={36}
               className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer hidden group-hover:block left-1/2 p-2 bg-primary text-white rounded top-1/2"
             />
+            </Link>
           </div>
 
           <div className="basis-1/2 p-2 flex flex-col justify-between lg:justify-start flex-1">
-            <Link href={"/"} className="truncate text-sm">
+            <Link href={`/product/${title}`} className="truncate text-sm">
               {title}
             </Link>
             <p className="font-bold py-2">${price}</p>
@@ -72,7 +73,7 @@ const Product = ({ image, title, price }: props) => {
                 <div className="bg-primary h-0 group-hover:h-full transition-all ease-in-out bottom-0 rounded absolute w-full left-0">
 
                 </div>
-              </button>
+            </button>
             <div className="absolute right-0 top-2 text-xs p-1 bg-red-700">
               <p className="text-faded">-17%</p>
             </div>
