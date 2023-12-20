@@ -1,17 +1,27 @@
-import React from "react";
+'use client'
+
+import React, { useEffect, useState } from "react";
 import {
   FacebookIcon,
   FacebookShareButton,
+  TelegramIcon,
+  TelegramShareButton,
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton,
   XIcon,
 } from "react-share";
 
-const Share = ({ url }: { url: string }) => {
+const Share = () => {
+  const [url, setUrl] =useState(''); 
+  useEffect(() => {
+    setUrl(window.location.href);
+    console.log("Current URL:", url);
+  }, [url]);
+
   return (
     <>
-      <div className="flex items-center mb-4 justify-between">
+      <div className="flex space-x-4 items-center mb-4 justify-between">
         <span>Share on:</span>
 
         <div className="flex space-x-2">
@@ -24,6 +34,9 @@ const Share = ({ url }: { url: string }) => {
           <WhatsappShareButton url={`${url}`}>
             <WhatsappIcon size={24} round={true} />
           </WhatsappShareButton>
+          <TelegramShareButton url={`${url}`}>
+            <TelegramIcon size={24} round={true} />
+          </TelegramShareButton>
         </div>
       </div>
     </>

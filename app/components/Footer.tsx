@@ -9,6 +9,7 @@ import React from "react";
 import Heading from "./ui/Heading";
 import Link from "next/link";
 import { categories } from "@/util";
+import Share from "./ui/Share";
 
 const Footer = () => {
   return (
@@ -92,7 +93,7 @@ const Footer = () => {
 
               <Link
                 className="flex hover:text-primary items-center mb-2"
-                href={""}
+                href={"/category"}
               >
                 <ArrowBigRight size={12} className="mr-2" /> More categories
               </Link>
@@ -100,33 +101,10 @@ const Footer = () => {
           </div>
 
           <div className="mb-4">
-            <Heading title="CUSTOMER CARE" />
+            <Heading title="TELL YOUR FRIENDS" />
 
             <div className="mt-4 text-sm lg:text-sm">
-              <Link
-                className="flex hover:text-primary items-center  mb-2"
-                href={""}
-              >
-                <ArrowBigRight size={12} className="mr-2" /> My Account
-              </Link>
-              <Link
-                className="flex hover:text-primary items-center mb-2"
-                href={""}
-              >
-                <ArrowBigRight size={12} className="mr-2" /> Support
-              </Link>
-              <Link
-                className="flex hover:text-primary items-center mb-2"
-                href={""}
-              >
-                <ArrowBigRight size={12} className="mr-2" /> FAQ
-              </Link>
-              <Link
-                className="flex hover:text-primary items-center mb-2"
-                href={""}
-              >
-                <ArrowBigRight size={12} className="mr-2" /> My Account
-              </Link>
+              <Share />
             </div>
           </div>
         </div>

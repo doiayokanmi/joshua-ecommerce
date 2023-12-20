@@ -90,7 +90,7 @@ const Page = ({ params }: { params: { product: string } }) => {
                     repudiandae debitis cumque est quaerat a nihil.
                   </p>
 
-                  <Share url={url} />
+                  <Share />
 
                   <div className="group sticky bottom-2">
                     <button
