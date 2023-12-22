@@ -45,12 +45,12 @@ const Special = ({
               <Product
                 image={"/image/products/noodles.png"}
                 title="Delicious Noodles with Sauces entail in it"
-                price={125.56}
+                price={1287338235.56}
               />
               <Product
                 image={"/image/products/rice.jpeg"}
                 title="A bag of rice is a container"
-                price={125.56}
+                price={34447333125.56}
               />
               <Product
                 image={"/image/products/5ltr.png"}
@@ -60,17 +60,17 @@ const Special = ({
               <Product
                 image={"/image/products/maggi.png"}
                 title="A pack of Maggi seasoning cube"
-                price={125.56}
+                price={13225.56}
               />
               <Product
                 image={"/image/products/polite.png"}
                 title="Simple product"
-                price={125.56}
+                price={123335.56}
               />
               <Product
                 image={"/image/products/noodles.png"}
                 title="Delicious Noodles with Sauces entail in it"
-                price={125.56}
+                price={33125.56}
               />
               <Product
                 image={"/image/products/rice.jpeg"}

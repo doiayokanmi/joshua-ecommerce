@@ -25,9 +25,10 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
   const dispatch = useAppDispatch();
   const [newQty, setNewQty] = useState(quantity);
   const [subTotal, setSubTotal] = useState(newQty * price);
+  const formattedPrice = price.toLocaleString('en-US', { maximumFractionDigits: 2 })
 
   useEffect(() => {
-    let newSub = (Number(newQty * price)).toFixed(2);
+    let newSub = (Number(newQty * price)).toLocaleString('en-US', { maximumFractionDigits: 2 });
     setSubTotal(newSub);
   }, [newQty, price]);
 
@@ -64,7 +65,7 @@ const CartCard = ({ title, price, image, id, quantity, index }: Props) => {
             <Image src={image} className="" width={100} height={100} alt={""} />
             <div className="ps-2 ">
               <h1 className="">{title}</h1>
-              <p className='py-4'>Price: <span className='text-primary font-semibold'>₦{price}</span></p>
+              <p className='py-4'>Price: <span className='text-primary font-semibold'>₦{formattedPrice}</span></p>
             </div>
           </div>
           <p className="lg:text-xl font-bold">₦{subTotal}</p>

@@ -23,6 +23,8 @@ const Page = () => {
     dispatch(resetCart());
   };
 
+ const formattedTotal = total.toLocaleString('en-US', { maximumFractionDigits: 2 })
+
   useEffect(() => {
     let newTotal = 0;
 
@@ -100,7 +102,7 @@ const Page = () => {
 
                   <div className="flex justify-between items-end border-b-2 mb-4 border-white">
                     <p>Total:</p>
-                    <p className="font-bold">{total}</p>
+                    <p className="font-bold">₦{formattedTotal}</p>
                   </div>
 
                   <Flutterwave total={total} />

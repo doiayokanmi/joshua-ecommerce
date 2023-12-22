@@ -6,6 +6,8 @@ interface Props {
 } 
 
 export default function Flutterwave({total}: Props) {
+  const formattedTotal =  total.toLocaleString('en-US', { maximumFractionDigits: 2 })
+
   const config = {
     public_key: "FLWPUBK_TEST-5cd0893ffb7cc6809354c25e7649d746-X",
     tx_ref: Date.now().toString(),
@@ -26,7 +28,7 @@ export default function Flutterwave({total}: Props) {
 
   const fwConfig = {
     ...config,
-    text: "Proceed to checkout",
+    text: `Checkout (₦${formattedTotal})`,
     callback: (response: any) => {
       console.log(response);
       closePaymentModal(); // this will close the modal programmatically

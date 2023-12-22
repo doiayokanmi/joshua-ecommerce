@@ -17,6 +17,7 @@ const Product = ({ image, title, price }: props) => {
   const cart = useAppSelector((state) => state.cart.cartArray);
   const dispatch = useAppDispatch();
   const quantity = 1;
+  const formattedPrice = price.toLocaleString('en-US', { maximumFractionDigits: 2 })
 
   const addCart = () => {
     const findItem = cart.find(
@@ -59,7 +60,7 @@ const Product = ({ image, title, price }: props) => {
             <Link href={`/product/${title}`} className="truncate text-sm">
               {title}
             </Link>
-            <p className="font-bold py-2">₦{price}</p>
+            <p className="font-bold truncate py-2">₦{formattedPrice}</p>
 
             <button
                 onClick={addCart}
