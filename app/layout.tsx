@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "./Providers";
 import ReduxProvider from "@/redux/ReduxProvider";
 import { ToastContainer } from 'react-toastify';
+import TawkTo from "./components/ui/TawkTo";
 
 
 export const metadata: Metadata = {
@@ -21,7 +22,11 @@ export default function RootLayout({
       <ToastContainer />
 
         <ReduxProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+            <TawkTo />
+            </Providers>
+
         </ReduxProvider>
       </body>
     </html>
