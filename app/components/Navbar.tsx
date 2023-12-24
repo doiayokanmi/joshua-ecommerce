@@ -1,19 +1,35 @@
 "use client";
 
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Lock, ShoppingCart, Search, Menu, X } from "lucide-react";
-import { links, categories } from "@/util";
+import { links } from "@/util";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { useAppSelector } from "../../redux/hooks";
+import { getCategory } from "@/util/sanity";
 
 const Navbar = () => {
   const [currentPage, setCurrentPage] = useState('Home');
   const [isOpen, setIsOpen] = useState(false);
   const cart = useAppSelector((state) => state.cart.cartArray);
+  const [categories, setCategories] = React.useState<CategoryType[]>([]);
+
+  type CategoryType = {
+    name: string;
+    image: string;
+    _id: string;
+  };
+
+  useEffect(() => {
+    const getCat = async () => {
+      const cate: CategoryType[] = await getCategory();
+      setCategories(cate);
+    };
+
+    getCat();
+  }, []);
 
   const newCat =  categories.slice(0, 4)
 
@@ -70,13 +86,13 @@ const Navbar = () => {
              newCat.map((category, index)=>(
                 <Link
                 className={`uppercase p-4 hover:bg-black ${
-                  currentPage == category.title && "bg-black"
+                  currentPage == category.name && "bg-black"
                 }`}
-                href={`${category.linkTo}`}
+                href={`/category/${category._id}`}
                 key={index}
-                onClick={() => setCurrentPage(category.title)}
+                onClick={() => setCurrentPage(category.name)}
               >
-                {category.title}
+                {category.name}
               </Link>
               ))
             }

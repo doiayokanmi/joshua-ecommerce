@@ -16,6 +16,7 @@
   font-family: 'Jost', sans-serif;
 }
 
+/* WebKit Browsers (Chrome, Safari) */
 .nobar::-webkit-scrollbar {
   width: 0px;
   height: 0;
@@ -38,6 +39,16 @@
   border: 0px;
   cursor: pointer;
 }
+
+/* Firefox */
+.nobar {
+  scrollbar-width: none; /* For Firefox */
+}
+
+.nobar:hover {
+  scrollbar-width: none; /* For Firefox */
+}
+
 
 
 @media (prefers-color-scheme: dark) {

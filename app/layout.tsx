@@ -19,14 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={'bg-gray-100'}>
-      <ToastContainer />
-
+        <ToastContainer />
         <ReduxProvider>
           <Providers>
             {children}
             <TawkTo />
-            </Providers>
-
+          </Providers>
         </ReduxProvider>
       </body>
     </html>

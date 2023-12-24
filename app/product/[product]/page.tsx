@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { ShoppingBasket } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
+import Rating from '@mui/material/Rating';
 
 const Page = ({ params }: { params: { product: string } }) => {
   const item = {
@@ -82,6 +83,8 @@ const Page = ({ params }: { params: { product: string } }) => {
                       -17%
                     </p>
                   </div>
+
+                  <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
 
                   <p className="mb-4">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
