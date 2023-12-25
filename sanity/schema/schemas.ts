@@ -103,3 +103,35 @@ export const product = {
     },
   ],
 };
+
+export const users = {
+  name: "users",
+  title: "Users",
+  type: "document",
+  fields: [
+    {
+      name: "fullName",
+      title: "Full Name",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "username",
+      title: "Username",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "email",
+      title: "Email",
+      type: "string",
+      validation: (Rule) => Rule.required().email(),
+    },
+    {
+      name: "password",
+      title: "Password",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+  ],
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import config from '@/sanity.config'
+import config from '@/config/sanity.config'
 import { NextStudio } from 'next-sanity/studio'
 import React from 'react'
 

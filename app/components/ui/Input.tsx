@@ -5,12 +5,14 @@ import React, { useState } from "react";
 
 interface Props {
   placeholder: string;
+  value: string;
   isPassword: boolean;
   icon: JSX.Element;
+  onChange: (e) => void;
 }
 
 
-const Input = ({ placeholder, isPassword, icon }: Props) => {
+const Input = ({ placeholder, isPassword, icon, onChange, value }: Props) => {
   const [changeType, setChangeType] = useState(true);
   return (
     <>
@@ -18,8 +20,10 @@ const Input = ({ placeholder, isPassword, icon }: Props) => {
         {icon}
         <input
           type={`${isPassword && changeType ? "password" : "text"}`}
-          className="p-2 w-full focus:outline-0 bg-gray-100"
+          className="p-2 w-full outline-0 focus:outline-0 bg-gray-100"
           placeholder={placeholder}
+          onChange={onChange}
+          value={value}
         />
 
         {isPassword && (
