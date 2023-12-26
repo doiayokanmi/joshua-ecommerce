@@ -28,3 +28,18 @@ export async function getActualCategory(currentid: string) {
     { currentid }
   );
 }
+
+export async function getAllUsers() {
+  return client.fetch(
+    groq`*[_type=='users'] {
+        _id,
+        _createdAt,
+        firstName,
+        otherName,
+        address,
+        username,
+        email,
+        password,
+    }`
+  );
+}

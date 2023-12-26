@@ -10,16 +10,32 @@ import { confettiEffect } from '@/app/components/ui/confetti';
 import { client } from '@/util';
 import { CircularProgress } from '@mui/material';
 import { Checkbox } from '@nextui-org/react';
-import { Lock, LogInIcon, MailIcon, User } from 'lucide-react';
+import { Lock, LogInIcon, MailIcon, MapPinIcon, User } from 'lucide-react';
 import Link from 'next/link';
+
+interface valueProps {
+  username: any;
+  firstName: any;
+  otherName: any;
+  address: any;
+  email: any;
+  password: any;
+  cPassword?: string;
+  terms: any;
+}
 
 const Page = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
+  const [errorMsg, setErrorMsg] = React.useState('');
+
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
-    fullName: Yup.string().required('Full name is required'),
+    firstName: Yup.string().required('First name is required'),
+    otherName: Yup.string().required('Other name is required'),
+    address: Yup.string().required('Address is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
     cPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm password is required'),
@@ -29,38 +45,61 @@ const Page = () => {
   const formik = useFormik({
     initialValues: {
       username: '',
-      fullName: '',
+      firstName: '',
+      otherName: '',
       email: '',
+      address: '',
       password: '',
       cPassword: '',
       terms: false,
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      setIsLoading(true);
+
       handleReg(values);
-      formik.resetForm();
-      setIsSuccess(true);
+
     },
   });
 
-  const handleReg = async (values: { username: any; fullName: any; email: any; password: any; cPassword?: string; terms: any; }) => {
-    if (values.terms) {
-      try {
-        await client.create({
-          _type: 'users',
-          username: values.username,
-          password: values.password,
-          email: values.email,
-          fullName: values.fullName,
-        });
-        confettiEffect();
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error submitting form:', error);
+  const handleReg = async (values: valueProps) => {
+    setIsLoading(true);
+
+    const userExists = await client.fetch(`*[_type == 'users' && (email == $email || username == $username)]`, {
+      email: values.email,
+      username: values.username,
+    });
+
+    if (userExists.length === 0) {
+      if (values.terms) {
+        try {
+          await client.create({
+            _type: 'users',
+            username: values.username,
+            password: values.password,
+            email: values.email,
+            firstName: values.firstName,
+            otherName: values.otherName,
+            address: values.address,
+          });
+
+          confettiEffect();
+          formik.resetForm();
+          setIsSuccess(true);
+          setIsError(false);
+        } catch (error) {
+          console.error('Error submitting form:', error);
+        }
       }
+    } else {
+      setIsSuccess(false);
+      setIsError(true);
+      setErrorMsg('User already exists/username taken by someone else');
     }
+
+    setIsLoading(false);
   };
+
+
 
   return (
     <>
@@ -78,8 +117,14 @@ const Page = () => {
 
           {
             isSuccess && <div className="mb-4 text-white rounded p-4 bg-success">
-            Registration successful, proceed to <Link href='/Auth/signIn'>login page</Link> to gain access
-          </div>
+              Registration successful, proceed to <Link className='text-warning underline' href='/Auth/signIn'>login page</Link> to gain access
+            </div>
+          }
+
+          {
+            isError && <div className="mb-4 text-white rounded p-4 bg-warning">
+              {errorMsg}
+            </div>
           }
           {formik.touched.username && formik.errors.username && (
             <div className="text-danger text-xs">{formik.errors.username}</div>
@@ -94,16 +139,29 @@ const Page = () => {
             icon={<User />}
           />
 
-          {formik.touched.fullName && formik.errors.fullName && (
-            <div className="text-danger text-xs">{formik.errors.fullName}</div>
+          {formik.touched.firstName && formik.errors.firstName && (
+            <div className="text-danger text-xs">{formik.errors.firstName}</div>
           )}
           <Input
-            value={formik.values.fullName}
+            value={formik.values.firstName}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            name="fullName"
+            name="firstName"
             isPassword={false}
-            placeholder="Full name"
+            placeholder="Adewale"
+            icon={<User />}
+          />
+
+          {formik.touched.otherName && formik.errors.otherName && (
+            <div className="text-danger text-xs">{formik.errors.otherName}</div>
+          )}
+          <Input
+            value={formik.values.otherName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            name="otherName"
+            isPassword={false}
+            placeholder="Ugochukwu Abdullah"
             icon={<User />}
           />
 
@@ -118,6 +176,19 @@ const Page = () => {
             isPassword={false}
             placeholder="Email"
             icon={<MailIcon />}
+          />
+
+          {formik.touched.address && formik.errors.address && (
+            <div className="text-danger text-xs">{formik.errors.address}</div>
+          )}
+          <Input
+            value={formik.values.address}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            name="address"
+            isPassword={false}
+            placeholder="Address"
+            icon={<MapPinIcon />}
           />
 
           {formik.touched.password && formik.errors.password && (
@@ -169,6 +240,7 @@ const Page = () => {
                 title={'Register'}
                 icon={<LogInIcon className="mr-2" />}
                 func={formik.handleSubmit}
+              
               />
             )}
           </div>

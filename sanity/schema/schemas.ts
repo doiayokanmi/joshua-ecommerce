@@ -110,8 +110,14 @@ export const users = {
   type: "document",
   fields: [
     {
-      name: "fullName",
-      title: "Full Name",
+      name: "firstName",
+      title: "First Name",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "otherName",
+      title: "Other Name",
       type: "string",
       validation: (Rule) => Rule.required(),
     },
@@ -126,6 +132,12 @@ export const users = {
       title: "Email",
       type: "string",
       validation: (Rule) => Rule.required().email(),
+    },
+    {
+      name: "address",
+      title: "Address",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "password",
