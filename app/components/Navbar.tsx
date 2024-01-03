@@ -15,14 +15,25 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useAppSelector((state) => state.cart.cartArray);
   const [categories, setCategories] = React.useState<CategoryType[]>([]);
-  const user = JSON.parse(sessionStorage.getItem('user'));
-  console.log(user)
+  const [user, setUser] = useState<{ firstName: string } | null>(null);
 
   type CategoryType = {
     name: string;
     image: string;
     _id: string;
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const userString = sessionStorage.getItem("user");
+      if (userString) {
+        const userHere = JSON.parse(userString);
+         setUser(userHere);
+      }
+    };
+    getUser();
+  }, []);
+
 
   useEffect(() => {
     const getCat = async () => {
@@ -32,6 +43,11 @@ const Navbar = () => {
 
     getCat();
   }, []);
+
+  const handleLogOut = () => {
+   sessionStorage.clear()
+   setUser(null)
+  }
 
   const newCat = categories.slice(0, 4)
 
@@ -64,7 +80,7 @@ const Navbar = () => {
                 Welcome, {user.firstName}
               </p>
 
-              <button onClick={() => sessionStorage.removeItem('user')} className="absolute w-full justify-end hidden group-hover:flex">
+              <button onClick={handleLogOut} className="absolute w-full justify-end hidden group-hover:flex">
                 Logout
               </button>
             </div>
