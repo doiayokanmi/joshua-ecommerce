@@ -10,12 +10,15 @@ import React from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [error, setError] = React.useState<string>("");
+  const [isError, setIsError] = React.useState<boolean>(false);
+  const [errorMsg, setErrorMsg] = React.useState<string>("");
   const [success, setSuccess] = React.useState<boolean>(false);
   const [rememberMe, setRememberMe] = React.useState<boolean>(false);
+  const router = useRouter()
 
   const validationSchema = Yup.object().shape({
     username: Yup.string().required('Username/email is required'),
@@ -35,17 +38,25 @@ const Page = () => {
 
   const handleLogIn = async (values: any) => {
     setLoading(true)
-    const userExists = await client.fetch(`*[_type == 'users' && (email == $username || username == $username) && password == $password]`, {
-      username: values.username,
+    const userExists = await client.fetch(`*[_type == 'users' && (lower(email) == $username || lower(username) == $username) && password == $password]`, {
+      username: (values.username).toLowerCase(),
       password: values.password,
     });
     setLoading(false)
-    userExists.length != 0 ? window.location.href = "/" : alert("Invalid username or password");
+    if (userExists.length != 0) {
+      setIsError(false);
+      window.sessionStorage.setItem("user", JSON.stringify(userExists[0]));
+     router.push('/')
+    } else {
+      setIsError(true);
+      setErrorMsg("Invalid username and/or password");
+    }
+
   }
   return (
     <>
       <div className="relative">
-
+      
         <AuthLayout>
           <p className="text-center text-sm py-2">
             Unlock deals and effortless shopping. Log in for exclusive offers and
@@ -57,6 +68,12 @@ const Page = () => {
             <h1 className="text-primary text-center pb-4 font-bold">
               Login Account
             </h1>
+
+            {
+              isError && <div className="mb-4 text-white rounded p-4 bg-warning">
+                {errorMsg}
+              </div>
+            }
 
             {formik.touched.username && formik.errors.username && (
               <div className="text-danger text-xs">{formik.errors.username}</div>
@@ -90,11 +107,11 @@ const Page = () => {
             </div>
             {
               loading ?
-              <div className="flex justify-center">
-                <CircularProgress />
-              </div>
-               :
-              <Button
+                <div className="flex justify-center">
+                  <CircularProgress />
+                </div>
+                :
+                <Button
                   func={formik.handleSubmit}
                   title={"Sign in"}
                   icon={<LogInIcon className="mr-2" />}

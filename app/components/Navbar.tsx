@@ -5,7 +5,7 @@ import { Lock, ShoppingCart, Search, Menu, X } from "lucide-react";
 import { links } from "@/util";
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@nextui-org/react";
+import { Avatar, Badge } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { useAppSelector } from "../../redux/hooks";
 import { getCategory } from "@/util/sanity";
@@ -15,6 +15,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useAppSelector((state) => state.cart.cartArray);
   const [categories, setCategories] = React.useState<CategoryType[]>([]);
+  const user = JSON.parse(sessionStorage.getItem('user'));
+  console.log(user)
 
   type CategoryType = {
     name: string;
@@ -31,13 +33,13 @@ const Navbar = () => {
     getCat();
   }, []);
 
-  const newCat =  categories.slice(0, 4)
+  const newCat = categories.slice(0, 4)
 
   return (
     <>
-      <div className="flex relative z-50 bg-white justify-between items-center text-xs lg:px-12 lg:py-6 p-4">
+      <div className="flex relative z-50 bg-white justify-between items-center text-xs lg:text-base lg:px-12 lg:py-6 p-4">
         <Link href='/'>
-        <Image src={"/image/logo.png"} width={80} height={50} alt="logo" />
+          <Image src={"/image/logo.png"} width={80} height={50} alt="logo" />
         </Link>
 
         <div className="hidden lg:flex justify-between border border-primary w-1/2">
@@ -48,13 +50,25 @@ const Navbar = () => {
           </button>
         </div>
 
-        <Link
-          className="text-gray-600 font-normal flex items-center"
-          href={"/Auth/signIn"}
-        >
-          <Lock className="mr-2" size={12} />
-          Login or register
-        </Link>
+        {
+          !user ? <Link
+            className="text-gray-600 font-normal flex items-center"
+            href={"/Auth/signIn"}
+          >
+            <Lock className="mr-2" size={12} />
+            Login or register
+          </Link>
+            :
+            <div className="group transition-all ease-in-out relative">
+              <p>
+                Welcome, {user.firstName}
+              </p>
+
+              <button onClick={() => sessionStorage.removeItem('user')} className="absolute w-full justify-end hidden group-hover:flex">
+                Logout
+              </button>
+            </div>
+        }
       </div>
 
       <div className="sticky top-0 z-50 bg-primary text-xs font-bold flex justify-between items-center lg:px-12 px-4 text-white">
@@ -69,39 +83,35 @@ const Navbar = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className={`flex transition-all ease-in-out absolute top-12 bg-primary left-0 w-full lg:w-auto lg:static flex-col lg:flex-row lg:h-auto overflow-hidden ${
-            isOpen ? "h-[340px]" : "h-0"
-          }`}
+          className={`flex transition-all ease-in-out absolute top-12 bg-primary left-0 w-full lg:w-auto lg:static flex-col lg:flex-row lg:h-auto overflow-hidden ${isOpen ? "h-[340px]" : "h-0"
+            }`}
         >
           <Link
-              className={`uppercase p-4 hover:bg-black ${
-                currentPage == 'Home' && "bg-black"
+            className={`uppercase p-4 hover:bg-black ${currentPage == 'Home' && "bg-black"
               }`}
-              href={'/'}
-              onClick={() => setCurrentPage('Home')}
-            >Home
-            </Link>
+            href={'/'}
+            onClick={() => setCurrentPage('Home')}
+          >Home
+          </Link>
 
-            {
-             newCat.map((category, index)=>(
-                <Link
-                className={`uppercase p-4 hover:bg-black ${
-                  currentPage == category.name && "bg-black"
-                }`}
+          {
+            newCat.map((category, index) => (
+              <Link
+                className={`uppercase p-4 hover:bg-black ${currentPage == category.name && "bg-black"
+                  }`}
                 href={`/category/${category._id}`}
                 key={index}
                 onClick={() => setCurrentPage(category.name)}
               >
                 {category.name}
               </Link>
-              ))
-            }
+            ))
+          }
 
           {links.map((link, index) => (
             <Link
-              className={`uppercase p-4 hover:bg-black ${
-                currentPage == link.title && "bg-black"
-              }`}
+              className={`uppercase p-4 hover:bg-black ${currentPage == link.title && "bg-black"
+                }`}
               href={link.linkTo}
               key={index}
               onClick={() => setCurrentPage(link.title)}
